@@ -1,0 +1,21 @@
+
+
+Navbar
+  1. Nav container grows and shrinks depending on scrolling direction. See twitter
+  2. Clicking on search will change div to input box for searching.
+      a. implement search feature.
+  3. Random duck path on page refresh.
+  4. Track current time by
+      a. shows sun/moving moving from right to left
+           - scrape weather channel for weather information
+           - add clouds/ rain
+           - using SVG images
+      c. navbar shadows on duck and text based on direction of the sun/moon.
+
+Path  "/"
+  1. Make page scalable to mobile.
+      a. try to implement masonry grid https://codepen.io/golle404/pen/wWoXwz
+
+Path /signup & /login
+  1. Remove react paths.... switch to modal
+  2. Prevent title from rerendering when a change is made to the form.

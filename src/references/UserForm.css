@@ -1,0 +1,13 @@
+.form-container {
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 1px solid black;
+  width: 50%;
+  height: 60%;
+}
+
+.form-field {
+  width: 90%;
+  height: 50px;
+  margin: 10px;
+}

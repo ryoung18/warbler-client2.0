@@ -1,0 +1,65 @@
+.warbler-container {
+  margin: auto;
+  margin: 30px;
+  width: 300px;
+  border-radius: 3px;
+  border: .5px solid lightgray;
+  background: white;
+  box-shadow: 1px 1px 30px lightgray;
+  align-self:flex-start;
+}
+
+.warbler-vid-img > img {
+  width: 300px;
+  border-radius: 3px 3px 0 0;
+  margin-bottom: -4px;
+}
+
+  .user-image > img{
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    border: 1px solid lightgray;
+  }
+
+.desc {
+  padding: 15px;
+  background: white;
+  /*border-radius: 5px;*/
+  border-top: .5px solid lightgray;
+  background: none;
+}
+  .account {
+    display: flex;
+    margin-bottom: 10px;
+  }
+    .name {
+      margin-left: 5px;
+      width: 100%;
+      /*border: 1px solid black;*/
+    }
+      .warbler-name {
+        display: list-item;
+        list-style: none;
+      }
+
+      .warbler-handler {
+        display: list-item;
+      }
+
+      .time {
+        text-align: right;
+        /*border: 1px solid black;*/
+        width: 100px;
+      }
+
+  .message {
+    margin-bottom: 5px;
+  }
+
+  .warbler-footer {
+    background: lightpink;
+  }
+    .action-btn {
+      margin-right: 50px;
+    }

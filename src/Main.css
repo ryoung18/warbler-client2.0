@@ -1,0 +1,16 @@
+.main {
+  /*margin-top: 220px;*/
+  /*border: 1px solid green;*/
+}
+
+.divider {
+  text-align: center;
+}
+
+.dividerText {
+    /*background-color: #f5f8fa;*/
+    color: #14171a;
+    font-size: 18px;
+    padding: 0 15px;
+    font-weight: bold;
+}

@@ -1,0 +1,86 @@
+/*.form-container {
+  padding: 2%;
+  border: 1px solid black;
+}*/
+
+.form-container > form {
+  margin: auto;
+  width: 200px;
+  background: white;
+  text-align: left;
+  padding: 40px 50px 40px 50px;
+  border: 3px solid lightblue;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-field {
+  padding-bottom: 20px;
+  /*width: 200px;*/
+  /*border: 1px solid black;*/
+}
+
+.form-field > label {
+  width: 100px;
+  display: block;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  color: #63b5cf;
+  /*font-weight: 500;*/
+  /*text-shadow: 2px 1px 1px lightgray;*/
+}
+
+.form-field > input {
+  width: 190px;
+  height: 20px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.form-field > input:hover {
+  height: 19px;
+  border-bottom: 2px solid #63b5cf;
+}
+
+.form-center {
+  text-align: center;
+}
+
+.form-field > .round-btn {
+  width: 100px;
+  border: 2px solid #63b5cf;
+  color: #63b5cf;
+  /*text-shadow: 2px 1px 1px lightgray;*/
+}
+
+.form-center > .round-btn:hover {
+  width: 100px;
+  border: 2px solid #63b5cf;
+  color: white;
+  background: #63b5cf;
+  /*text-shadow: 2px 1px 1px lightgray;*/
+}
+
+.form-field > textarea {
+  width: 180px;
+  height: 58px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
+  resize: none;
+}
+
+.form-field > textarea:hover {
+  height: 57px;
+  border-bottom: 2px solid #63b5cf;
+}
+
+
+.form-field > h3 {
+  color: gray;
+}
+
+*:focus {
+    outline: none;
+}
