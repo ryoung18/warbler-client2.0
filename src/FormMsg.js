@@ -8,8 +8,7 @@ class FormMsg extends Component {
     super(props);
     this.state = {
       message: "",
-      img_url: "",
-      test: ""
+      img_url: ""
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,6 +25,7 @@ class FormMsg extends Component {
     const newMsg = (({ message, img_url }) => ({ message, img_url  }))(this.state);
     const loc = this.props.loc.replace('users', 'warblers');
     axios.post(`${BASE_URL}${loc}`, newMsg)
+    this.setState({message: '', img_url: ''})
   }
 
 
@@ -35,11 +35,11 @@ class FormMsg extends Component {
         <form onSubmit={this.handleSubmit}>
           <div className="form-field" >
             <label> Message </label>
-            <textarea type='text' name='message' rows="6" spellcheck="true" minlength="3" maxlength="144" required onChange={this.handleChange}/>
+            <textarea type='text' name='message' rows="6" spellcheck="true" minlength="3" maxlength="144" required value={this.state.message || ''} onChange={this.handleChange}/>
           </div>
           <div className="form-field" >
             <label> Image URL </label>
-            <input className="message Input" type='text' name='img_url' onChange={this.handleChange}/>
+            <input className="message Input" type='text' name='img_url' value={this.state.img_url || ''} onChange={this.handleChange}/>
           </div>
           <div className="form-field form-center">
               <RoundButton btnName='Submit'/>

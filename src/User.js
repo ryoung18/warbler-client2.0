@@ -15,19 +15,20 @@ class  User extends Component {
       name:'',
       user_id: '',
       username: '',
-      profile_img: ''
+      profile_img: '',
+      msg_count: ''
     }
   }
 
   componentDidMount() {
     let { pathname } = this.props.location
-        // pathname = pathname.replace('users', 'warblers')
-      // debugger
-    axios.get(`${BASE_URL}${pathname}`).then(response => {
-      const { id: user_id, name, username, profile_img } = response.data;
 
-      const warblers = response.data.messages.map(u => {
+    axios.get(`${BASE_URL}${pathname}`).then(response => {
+      const { id: user_id, name, username, profile_img, msg_count } = response.data;
+
+      const warblers = response.data.msgs.map(u => {
         const { id: msg_id, created_at, img_url, message } = u;
+
         return {
           msg_id,
           created_at,
@@ -36,12 +37,35 @@ class  User extends Component {
         }
       })
 
-      this.setState({warblers, name, user_id, username, profile_img})
+      this.setState({warblers, name, user_id, username, profile_img, msg_count})
      });
   }
 
+
+  componentDidUpdate(prevProps, prevState){
+    if(prevProps.location.pathname !== this.props.location.pathname){
+      let { pathname } = this.props.location
+      axios.get(`${BASE_URL}${pathname}`).then(response => {
+        const { id: user_id, name, username, profile_img, msg_count } = response.data;
+
+        const warblers = response.data.msgs.map(u => {
+          const { id: msg_id, created_at, img_url, message } = u;
+
+          return {
+            msg_id,
+            created_at,
+            img_url,
+            message
+          }
+        })
+
+        this.setState({warblers, name, user_id, username, profile_img, msg_count})
+       });
+    }
+  }
+
   render () {
-    const {user_id, name, username, profile_img} = this.state;
+    const {user_id, name, username, profile_img, msg_count} = this.state;
     const warbForm = this.props.location.pathname === `/users/${localStorage.user_id}` ?
       (<FormMsg loc={this.props.location.pathname}/>) : ''
     ;
@@ -63,7 +87,7 @@ class  User extends Component {
           <div className="sideContainer">
             <div className="userInfoContainer">
 
-              <div className="halfblue">
+              <div className="blueBlock h100">
                 <div className="profileImageContainer">
                   <img className="profileImage" src={profile_img} />
                 </div>
@@ -75,27 +99,37 @@ class  User extends Component {
 
 
             </div>
-            <div className="warbs">
+            <div className="whiteBlock">
                <h3> Warbles <br />
-                    20
+                    {msg_count}
               </h3>
             </div>
           </div>
           {warbForm}
         </div>
-        <div className="usersMiddle">
+        <div className="userMiddle">
           <h2>Latest Tweets</h2>
           {userWarble}
         </div>
-        <div className="userRight">
-          <div className="following">
-            <div className="sideContainer">
-                Following
+        <div className="userRight1">
+          <div className="sideContainer">
+            <div className="userInfoContainer">
+              <div className="blueBlock h30 mTn20">
+                <h4> Followers </h4>
+              </div>
+            </div>
+            <div className="whiteBlock">
+
             </div>
           </div>
-          <div className="follower">
-            <div className="sideContainer">
-                Follower
+          <div className="sideContainer">
+            <div className="userInfoContainer">
+              <div className="blueBlock h30">
+                <h4> Following </h4>
+              </div>
+            </div>
+            <div className="whiteBlock">
+
             </div>
           </div>
         </div>
