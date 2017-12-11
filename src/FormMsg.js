@@ -28,7 +28,6 @@ class FormMsg extends Component {
     this.setState({message: '', img_url: ''})
   }
 
-
   render () {
     return (
       <div className="form-container">

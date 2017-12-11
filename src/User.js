@@ -21,14 +21,21 @@ class  User extends Component {
   }
 
   componentDidMount() {
-    let { pathname } = this.props.location
+    this.getUserInfo()
+  }
 
+  componentDidUpdate(prevProps, prevState) {
+    if(prevProps.location.pathname !== this.props.location.pathname){
+      this.getUserInfo()
+    }
+  }
+
+  getUserInfo () {
+    let { pathname } = this.props.location
     axios.get(`${BASE_URL}${pathname}`).then(response => {
       const { id: user_id, name, username, profile_img, msg_count } = response.data;
-
       const warblers = response.data.msgs.map(u => {
-        const { id: msg_id, created_at, img_url, message } = u;
-
+        let { id: msg_id, created_at, img_url, message } = u;
         return {
           msg_id,
           created_at,
@@ -39,29 +46,6 @@ class  User extends Component {
 
       this.setState({warblers, name, user_id, username, profile_img, msg_count})
      });
-  }
-
-
-  componentDidUpdate(prevProps, prevState){
-    if(prevProps.location.pathname !== this.props.location.pathname){
-      let { pathname } = this.props.location
-      axios.get(`${BASE_URL}${pathname}`).then(response => {
-        const { id: user_id, name, username, profile_img, msg_count } = response.data;
-
-        const warblers = response.data.msgs.map(u => {
-          const { id: msg_id, created_at, img_url, message } = u;
-
-          return {
-            msg_id,
-            created_at,
-            img_url,
-            message
-          }
-        })
-
-        this.setState({warblers, name, user_id, username, profile_img, msg_count})
-       });
-    }
   }
 
   render () {
@@ -97,7 +81,6 @@ class  User extends Component {
                 </div>
               </div>
 
-
             </div>
             <div className="whiteBlock">
                <h3> Warbles <br />
@@ -109,6 +92,7 @@ class  User extends Component {
         </div>
         <div className="userMiddle">
           <h2>Latest Tweets</h2>
+          <p> Fix issues : Message - 1. Display "sent" with set time out after submit. 2. Show new message on top of the warbler feed.. Image : 3. validate image before submit. 4. Refresh JWT.</p>
           {userWarble}
         </div>
         <div className="userRight1">
